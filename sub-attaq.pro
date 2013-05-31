@@ -2,7 +2,7 @@ QT += widgets sensors opengl
 QTPLUGIN += qtsensors_ios
 CONFIG += release
 TARGET = SubAttack
-#QMAKE_INFO_PLIST = Info.plist # with orientation locked to landscape
+QMAKE_INFO_PLIST = Info.plist # with orientation locked to landscape
 
 qtHaveModule(opengl): QT += opengl
 HEADERS += boat.h \
