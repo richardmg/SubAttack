@@ -86,14 +86,14 @@ GraphicsScene::GraphicsScene(const QRect &rect, Mode mode)
     surfaceItem2->setPos(0, sealLevel() - 20);
 
     QPropertyAnimation *moveSurfaceAnim1 = new QPropertyAnimation(surfaceItem1, "x", this);
-    moveSurfaceAnim1->setDuration(20000);
+    moveSurfaceAnim1->setDuration(18000);
     moveSurfaceAnim1->setStartValue(-surfaceItem1->boundingRect().width());
     moveSurfaceAnim1->setEndValue(0);
     moveSurfaceAnim1->setLoopCount(-1);
     moveSurfaceAnim1->start();
 
     QPropertyAnimation *moveSurfaceAnim2 = new QPropertyAnimation(surfaceItem2, "x", this);
-    moveSurfaceAnim2->setDuration(20000);
+    moveSurfaceAnim2->setDuration(18000);
     moveSurfaceAnim2->setStartValue(0);
     moveSurfaceAnim2->setEndValue(surfaceItem2->boundingRect().width());
     moveSurfaceAnim2->setLoopCount(-1);
@@ -109,7 +109,7 @@ GraphicsScene::GraphicsScene(const QRect &rect, Mode mode)
     boat->setPos(100, sealLevel() - boat->size().height());
     
     QPropertyAnimation *moveBoatAnim = new QPropertyAnimation(boat, "y", this);
-    moveBoatAnim->setDuration(20000);
+    moveBoatAnim->setDuration(10000);
     moveBoatAnim->setStartValue(sealLevel() - boat->size().height());
     moveBoatAnim->setKeyValueAt(0.5, sealLevel() - boat->size().height() - 5);
     moveBoatAnim->setEndValue(sealLevel() - boat->size().height());
