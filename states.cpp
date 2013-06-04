@@ -227,7 +227,9 @@ void LostState::onEntry(QEvent *)
     scene->sensor.stop();
 
     //The message to display
-    QString message = QString("You lose on level %1. Your score is %2.").arg(game->currentLevel+1).arg(game->score);
+    GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel);
+    QString message = QString("You died at sea, %1!<br><br>Tap to start over...")
+    .arg(currentLevelDescription.name);
 
     //We set the level back to 0
     game->currentLevel = 0;
@@ -260,13 +262,19 @@ void WinState::onEntry(QEvent *)
     //We clear the scene
     scene->clearScene();
 
+    GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel);
+
     QString message;
     if (scene->levelsData.size() - 1 != game->currentLevel) {
-        message = QString("You win level %1. Your score is %2.\nTap to continue...").arg(game->currentLevel+1).arg(game->score);
+        message = QString("You won the attack, and are upgraded to %1!<br><br>Tap to enter next battle...")
+        .arg(currentLevelDescription.name);
+        
         //We increment the level number
         game->currentLevel++;
     } else {
-        message = QString("You finish the game on level %1. Your score is %2.").arg(game->currentLevel+1).arg(game->score);
+        message = QString("You won the war %1!<br><br>Tap to start over...")
+        .arg(currentLevelDescription.name);
+
         //We set the level back to 0
         game->currentLevel = 0;
         //We set the score back to 0
