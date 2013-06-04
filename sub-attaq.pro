@@ -4,7 +4,7 @@ contains(QT_CONFIG, release): CONFIG += release
 TARGET = SubAttack
 QMAKE_INFO_PLIST = Info.plist # with orientation locked to landscape
 
-icons.files = Icon-114.png Icon@2x.png
+icons.files = Icon-114.png Icon@2x.png Default-568h@2x.png
 QMAKE_BUNDLE_DATA += icons
 
 qtHaveModule(opengl): QT += opengl
