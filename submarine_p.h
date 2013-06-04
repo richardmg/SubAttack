@@ -82,8 +82,9 @@ protected slots:
     {
         GraphicsScene *graphicsScene = static_cast<GraphicsScene *>(submarine->scene());
         bool boatVisible = graphicsScene->boat->opacity() == 1;
-        if (boatVisible && qrand() % 200 + 1 == 3)
-            submarine->launchTorpedo(qrand() % 3 + 1);
+        if (boatVisible && qrand() % 200 + 1 == 3) {
+            submarine->launchTorpedo((qrand() % 3) + submarine->currentSpeed());
+        }
     }
 
 protected:

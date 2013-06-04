@@ -6,34 +6,43 @@
     </submarines>
     <levels>
         <level id="0" name="Seaman recruit">
-            <subinstance type="0" nb="1"/>
+            <subinstance speed="1" nb="1"/>
         </level>
-        <level id="1" name="Seaman apprentice">
-            <subinstance type="0" nb="2"/>
+	<level id="1" name="Seaman">
+            <subinstance speed="1" nb="2"/>
         </level>
-	<level id="2" name="Seaman">
-            <subinstance type="0" nb="4"/>
+	<level id="2" name="Leading seaman">
+            <subinstance speed="1" nb="4"/>
         </level>
-	<level id="3" name="Petty Officer Third Class">
-            <subinstance type="0" nb="6"/>
+	<level id="3" name="Petty officer">
+            <subinstance speed="1" nb="7"/>
         </level>
-	<level id="4" name="Petty Officer Second Class">
-            <subinstance type="0" nb="6"/>
+	<level id="4" name="Warrant officer ">
+            <subinstance speed="1" nb="10"/>
         </level>
-	<level id="5" name="Petty Officer First Class">
-            <subinstance type="0" nb="8"/>
+	<level id="5" name="Midshipman">
+            <subinstance speed="2" nb="6"/>
         </level>
-	<level id="6" name="Lieutenant">
-            <subinstance type="0" nb="10"/>
+	<level id="6" name="Ensign">
+            <subinstance speed="2" nb="8"/>
         </level>
-	<level id="7" name="Commander">
-            <subinstance type="0" nb="15"/>
+	<level id="7" name="Lieutenant">
+            <subinstance speed="2" nb="10"/>
         </level>
-	<level id="8" name="Captain">
-            <subinstance type="0" nb="12"/>
+	<level id="8" name="Commander">
+            <subinstance speed="2" nb="12"/>
         </level>
-	<level id="9" name="Admiral">
-            <subinstance type="0" nb="12"/>
+	<level id="9" name="Captain">
+            <subinstance speed="3" nb="6"/>
+        </level>
+	<level id="10" name="Commodore">
+            <subinstance speed="3" nb="8"/>
+        </level>
+	<level id="11" name="Admiral">
+            <subinstance speed="3" nb="10"/>
+        </level>
+	<level id="12" name="Fleet admiral">
+            <subinstance speed="3" nb="12"/>
         </level>
     </levels>
 </subattaq>

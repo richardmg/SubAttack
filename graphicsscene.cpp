@@ -135,7 +135,9 @@ GraphicsScene::GraphicsScene(const QRect &rect, Mode mode)
                  currentLevel.id = reader.attributes().value("id").toString().toInt();
                  currentLevel.name = reader.attributes().value("name").toString();
              } else if (reader.name() == "subinstance") {
-                 currentLevel.submarines.append(qMakePair(reader.attributes().value("type").toString().toInt(), reader.attributes().value("nb").toString().toInt()));
+                 currentLevel.submarines.append(qMakePair(
+                    reader.attributes().value("speed").toString().toInt(),
+                    reader.attributes().value("nb").toString().toInt()));
              }
          } else if (reader.tokenType() == QXmlStreamReader::EndElement) {
             if (reader.name() == "level") {

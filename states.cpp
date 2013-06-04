@@ -61,7 +61,7 @@ PlayState::PlayState(GraphicsScene *scene, QState *parent)
     : QState(parent),
     scene(scene),
     submachine(0),
-    currentLevel(0),
+    currentLevel(12),
     score(0)
 {
 }
@@ -186,17 +186,15 @@ void LevelState::initializeLevel()
     for (int i = 0; i < currentLevelDescription.submarines.size(); ++i ) {
 
         QPair<int,int> subContent = currentLevelDescription.submarines.at(i);
-        GraphicsScene::SubmarineDescription submarineDesc = scene->submarinesData.at(subContent.first);
-
         for (int j = 0; j < subContent.second; ++j ) {
-            SubMarine *sub = new SubMarine(submarineDesc.type, submarineDesc.name, submarineDesc.points);
+            SubMarine *sub = new SubMarine(0, "Sub", 10 * subContent.first);
             scene->addItem(sub);
             int random = (qrand() % 15 + 1);
             qreal x = random == 13 || random == 5 ? 0 : scene->width() - sub->size().width();
             qreal y = scene->height() -(qrand() % qRound(scene->height()/4) + 1) - sub->size().height() - scene->height() / 5;
             sub->setPos(x,y);
             sub->setCurrentDirection(x == 0 ? SubMarine::Right : SubMarine::Left);
-            sub->setCurrentSpeed(qrand() % 3 + 1);
+            sub->setCurrentSpeed((qrand() % 3) + subContent.first);
         }
     }
 }
@@ -265,6 +263,7 @@ void WinState::onEntry(QEvent *)
     GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel);
 
     QString message;
+    qDebug() << "levels read:" << scene->levelsData.size();
     if (scene->levelsData.size() - 1 != game->currentLevel) {
         message = QString("You won the attack, and are upgraded to %1!<br><br>Tap to enter next battle...")
         .arg(currentLevelDescription.name);

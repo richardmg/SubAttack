@@ -149,9 +149,6 @@ enum SubMarine::Movement SubMarine::currentDirection() const
 
 void SubMarine::setCurrentSpeed(int speed)
 {
-    if (speed < 0 || speed > 3) {
-        qWarning("SubMarine::setCurrentSpeed : The speed is invalid");
-    }
     this->speed = speed;
     emit subMarineStateChanged();
 }
