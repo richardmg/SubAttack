@@ -57,12 +57,25 @@
 
 MainWindow::MainWindow() : QMainWindow(0)
 {
+    // Check if we have artwork for the sreen size. Otherwise we construct a
+    // scene of size 1024x768, and scale the view to fit the screen instead:
     QRect screenRect = QGuiApplication::primaryScreen()->geometry();
-    screenRect = QRect(0, 0, 1024, 768);
-    scene = new GraphicsScene(screenRect);
-    layout()->setSizeConstraint(QLayout::SetFixedSize);
+    if (screenRect.width() < screenRect.height())
+        screenRect.setSize(QSize(screenRect.height(), screenRect.width()));
 
-    view = new QGraphicsView(scene, this);
+    QString folder = QString::number(screenRect.width()) + "x" + QString::number(screenRect.height());
+    QFile artworkForScreenSize(QStringLiteral(":/") + folder + QDir::separator() + "background");
+    
+    if (artworkForScreenSize.exists()) {
+        scene = new GraphicsScene(screenRect);
+        view = new QGraphicsView(scene, this);
+    } else {
+        QRect sceneRect = QRect(0, 0, 1024, 768);
+        scene = new GraphicsScene(sceneRect);
+        view = new QGraphicsView(scene, this);
+        view->scale(qreal(screenRect.width()) / sceneRect.width(), qreal(screenRect.height()) / sceneRect.height());
+    }
+
     view->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -72,4 +85,5 @@ MainWindow::MainWindow() : QMainWindow(0)
 #endif
 
     setCentralWidget(view);
+    layout()->setSizeConstraint(QLayout::SetFixedSize);
 }
