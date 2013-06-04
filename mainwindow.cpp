@@ -59,7 +59,7 @@ MainWindow::MainWindow() : QMainWindow(0)
 {
     // Check if we have artwork for the sreen size. Otherwise we construct a
     // scene of size 1024x768, and scale the view to fit the screen instead:
-    QRect screenRect = QGuiApplication::primaryScreen()->geometry();
+    QRect screenRect = QGuiApplication::primaryScreen()->availableGeometry();
     if (screenRect.width() < screenRect.height())
         screenRect.setSize(QSize(screenRect.height(), screenRect.width()));
 
