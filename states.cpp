@@ -61,7 +61,7 @@ PlayState::PlayState(GraphicsScene *scene, QState *parent)
     : QState(parent),
     scene(scene),
     submachine(0),
-    currentLevel(12),
+    currentLevel(0),
     score(0)
 {
 }
@@ -189,11 +189,11 @@ void LevelState::initializeLevel()
             SubMarine *sub = new SubMarine(0, "Sub", 10 * subContent.first, subContent.first);
             scene->addItem(sub);
             int random = (qrand() % 15 + 1);
-            qreal x = random == 13 || random == 5 ? 0 - (qrand() % 400) : scene->width() + (qrand() % 400);
+            qreal x = random < 6 ? 0 - (qrand() % 400) : scene->width() + (qrand() % 400);
             qreal y = scene->height() -(qrand() % qRound(scene->height()/4) + 1) - sub->size().height() - scene->height() / 5;
             sub->setPos(x,y);
-            sub->setCurrentDirection(x < 0 ? SubMarine::Right : SubMarine::Left);
-            sub->setCurrentSpeed((qrand() % 3));
+            sub->setCurrentDirection(x <= 0 ? SubMarine::Right : SubMarine::Left);
+            sub->setCurrentSpeed((qrand() % 2) + 1);
         }
     }
 }
