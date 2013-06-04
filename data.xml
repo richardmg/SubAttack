@@ -12,37 +12,37 @@
             <subinstance speed="1" nb="2"/>
         </level>
 	<level id="2" name="Leading seaman">
-            <subinstance speed="1" nb="4"/>
+            <subinstance speed="1" nb="3"/>
         </level>
 	<level id="3" name="Petty officer">
-            <subinstance speed="1" nb="7"/>
+            <subinstance speed="1" nb="4"/>
         </level>
 	<level id="4" name="Warrant officer ">
-            <subinstance speed="1" nb="10"/>
+            <subinstance speed="1" nb="5"/>
         </level>
 	<level id="5" name="Midshipman">
-            <subinstance speed="2" nb="6"/>
+            <subinstance speed="2" nb="4"/>
         </level>
 	<level id="6" name="Ensign">
-            <subinstance speed="2" nb="8"/>
+            <subinstance speed="2" nb="5"/>
         </level>
 	<level id="7" name="Lieutenant">
-            <subinstance speed="2" nb="10"/>
+            <subinstance speed="4" nb="6"/>
         </level>
 	<level id="8" name="Commander">
-            <subinstance speed="2" nb="12"/>
+            <subinstance speed="5" nb="5"/>
         </level>
 	<level id="9" name="Captain">
-            <subinstance speed="3" nb="6"/>
+            <subinstance speed="5" nb="6"/>
         </level>
 	<level id="10" name="Commodore">
-            <subinstance speed="3" nb="8"/>
+            <subinstance speed="5" nb="6"/>
         </level>
 	<level id="11" name="Admiral">
-            <subinstance speed="3" nb="10"/>
+            <subinstance speed="6" nb="7"/>
         </level>
 	<level id="12" name="Fleet admiral">
-            <subinstance speed="3" nb="12"/>
+            <subinstance speed="6" nb="8"/>
         </level>
     </levels>
 </subattaq>

@@ -69,8 +69,8 @@ static QAbstractAnimation *setupDestroyAnimation(SubMarine *sub)
 }
 
 
-SubMarine::SubMarine(int type, const QString &name, int points) : PixmapItem(QString("submarine"), QRect(0, 0, 1024, 768)),
-    subType(type), subName(name), subPoints(points), speed(0), direction(SubMarine::None)
+SubMarine::SubMarine(int type, const QString &name, int points, int torpedoSpeed) : PixmapItem(QString("submarine"), QRect(0, 0, 1024, 768)),
+    subType(type), subName(name), subPoints(points), speed(0), torpedoSpeed(torpedoSpeed), direction(SubMarine::None)
 {
     setZValue(5);
     setTransformOriginPoint(boundingRect().center());

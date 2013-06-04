@@ -59,7 +59,7 @@ public:
        Right
     };
     enum { Type = UserType + 1 };
-    SubMarine(int type, const QString &name, int points);
+    SubMarine(int type, const QString &name, int points, int torpedoSpeed);
 
     int points() const;
 
@@ -75,6 +75,8 @@ public:
     virtual int type() const;
 
     QGraphicsRotation *rotation() const { return graphicsRotation; }
+    
+    int torpedoSpeed;
 
 signals:
     void subMarineDestroyed();
