@@ -1,6 +1,6 @@
 QT += widgets sensors opengl
 QTPLUGIN += qtsensors_ios
-CONFIG += release
+contains(QT_CONFIG, release): CONFIG += release
 TARGET = SubAttack
 QMAKE_INFO_PLIST = Info.plist # with orientation locked to landscape
 
