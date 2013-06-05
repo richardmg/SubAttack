@@ -21,28 +21,28 @@
             <subinstance speed="1" nb="5"/>
         </level>
 	<level id="5" name="Midshipman">
-            <subinstance speed="2" nb="4"/>
+            <subinstance speed="2" nb="5"/>
         </level>
 	<level id="6" name="Ensign">
-            <subinstance speed="2" nb="5"/>
+            <subinstance speed="2" nb="6"/>
         </level>
 	<level id="7" name="Lieutenant">
             <subinstance speed="4" nb="6"/>
         </level>
 	<level id="8" name="Commander">
-            <subinstance speed="5" nb="5"/>
+            <subinstance speed="5" nb="7"/>
         </level>
 	<level id="9" name="Captain">
-            <subinstance speed="5" nb="6"/>
+            <subinstance speed="5" nb="7"/>
         </level>
 	<level id="10" name="Commodore">
-            <subinstance speed="5" nb="6"/>
+            <subinstance speed="5" nb="8"/>
         </level>
 	<level id="11" name="Admiral">
-            <subinstance speed="6" nb="7"/>
+            <subinstance speed="6" nb="8"/>
         </level>
 	<level id="12" name="Fleet admiral">
-            <subinstance speed="6" nb="8"/>
+            <subinstance speed="6" nb="9"/>
         </level>
     </levels>
 </subattaq>
