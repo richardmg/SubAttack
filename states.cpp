@@ -259,18 +259,17 @@ void WinState::onEntry(QEvent *)
     //We clear the scene
     scene->clearScene();
 
-    GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel);
-
     QString message;
-    qDebug() << "levels read:" << scene->levelsData.size();
     if (scene->levelsData.size() - 1 != game->currentLevel) {
+        GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel + 1);
         message = QString("You won the attack, and are upgraded to %1!<br><br>Tap to enter next battle...")
         .arg(currentLevelDescription.name);
         
         //We increment the level number
         game->currentLevel++;
     } else {
-        message = QString("You won the war %1!<br><br>Tap to start over...")
+        GraphicsScene::LevelDescription currentLevelDescription = scene->levelsData.value(game->currentLevel);
+        message = QString("Congratulations %1, you won the war!<br><br>Tap to start over...")
         .arg(currentLevelDescription.name);
 
         //We set the level back to 0
