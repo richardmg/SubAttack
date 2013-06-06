@@ -64,9 +64,9 @@ MainWindow::MainWindow(const QRect &sceneRect) : QGraphicsView()
     if (artworkForScreenSize.exists()) {
         scene = new GraphicsScene(sceneRect);
     } else {
-        QRect sceneRect = QRect(0, 0, 1024, 768);
-        scene = new GraphicsScene(sceneRect);
-        scale(qreal(sceneRect.width()) / sceneRect.width(), qreal(sceneRect.height()) / sceneRect.height());
+        QRect unscaledRect = QRect(0, 0, 1024, 768);
+        scene = new GraphicsScene(unscaledRect);
+        scale(qreal(sceneRect.width()) / unscaledRect.width(), qreal(sceneRect.height()) / unscaledRect.height());
     }
 
     setScene(scene);
