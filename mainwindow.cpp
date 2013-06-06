@@ -44,7 +44,6 @@
 #include "graphicsscene.h"
 
 //Qt
-#include <QGraphicsView>
 #include <QApplication>
 #include <QMenu>
 #include <QMenuBar>
@@ -55,35 +54,27 @@
 # include <QtOpenGL/QtOpenGL>
 #endif
 
-MainWindow::MainWindow() : QMainWindow(0)
+MainWindow::MainWindow(const QRect &sceneRect) : QGraphicsView()
 {
     // Check if we have artwork for the sreen size. Otherwise we construct a
     // scene of size 1024x768, and scale the view to fit the screen instead:
-    QRect screenRect = QGuiApplication::primaryScreen()->availableGeometry();
-    if (screenRect.width() < screenRect.height())
-        screenRect.setSize(QSize(screenRect.height(), screenRect.width()));
-
-    QString folder = QString::number(screenRect.width()) + "x" + QString::number(screenRect.height());
+    QString folder = QString::number(sceneRect.width()) + "x" + QString::number(sceneRect.height());
     QFile artworkForScreenSize(QStringLiteral(":/") + folder + QDir::separator() + "background");
     
     if (artworkForScreenSize.exists()) {
-        scene = new GraphicsScene(screenRect);
-        view = new QGraphicsView(scene, this);
+        scene = new GraphicsScene(sceneRect);
     } else {
         QRect sceneRect = QRect(0, 0, 1024, 768);
         scene = new GraphicsScene(sceneRect);
-        view = new QGraphicsView(scene, this);
-        view->scale(qreal(screenRect.width()) / sceneRect.width(), qreal(screenRect.height()) / sceneRect.height());
+        scale(qreal(sceneRect.width()) / sceneRect.width(), qreal(sceneRect.height()) / sceneRect.height());
     }
 
-    view->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setScene(scene);
+    setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene->setupScene();
 #ifndef QT_NO_OPENGL
-    view->setViewport(new QGLWidget(QGLFormat(QGL::SampleBuffers)));
+    setViewport(new QGLWidget(QGLFormat(QGL::SampleBuffers)));
 #endif
-
-    setCentralWidget(view);
-    layout()->setSizeConstraint(QLayout::SetFixedSize);
 }

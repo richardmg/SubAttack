@@ -43,21 +43,20 @@
 #define __MAINWINDOW__H__
 
 //Qt
-#include <QtWidgets/QMainWindow>
+#include <QGraphicsView>
 class GraphicsScene;
 QT_BEGIN_NAMESPACE
 class QGraphicsView;
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public QGraphicsView
 {
 Q_OBJECT
 public:
-    MainWindow();
+    MainWindow(const QRect &sceneRect);
 
 private:
     GraphicsScene *scene;
-    QGraphicsView *view;
 };
 
 #endif //__MAINWINDOW__H__

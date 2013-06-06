@@ -47,13 +47,16 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     Q_INIT_RESOURCE(subattaq);
-
     app.primaryScreen()->setOrientationUpdateMask(Qt::LandscapeOrientation);
-
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    
+    QRect sceneRect = QGuiApplication::primaryScreen()->availableGeometry().adjusted(-1, -1, 1, 1);
+    if (sceneRect.width() < sceneRect.height())
+        sceneRect.setSize(QSize(sceneRect.height(), sceneRect.width()));
 
-    MainWindow w;
-    w.show();
+    MainWindow w(sceneRect);
+    w.setGeometry(sceneRect);
+    w.showNormal();
 
     return app.exec();
 }
